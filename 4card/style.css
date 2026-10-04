@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.head {
+  background-color: #2b353e;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 70px;
+  padding: 0 10%;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.l-wrap {
+  position: absolute;
+  top: 15px;
+  left: 10%;
+  z-index: 100;
+  filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.4));
+}
+
+.logo {
+  width: 200px;
+  height: 90px;
+  background-color: #e4e4e4;
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.l-in {
+  width: 180px;
+  height: 70px;
+  border: 1px solid #666;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.l-in::before, .l-in::after {
+  content: "•";
+  position: absolute;
+  color: #666;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.l-in::before { left: 10px; }
+.l-in::after { right: 10px; }
+
+.l-main {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+.l-sm {
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #a0a8b0;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav a:hover {
+  color: #92d050;
+}
+
+.hero {
+  flex: 1; 
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  position: relative;
+  padding: 0 10%;
+  color: #fff;
+  display: flex; 
+  align-items: center;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.bg1 { background-color: #7b8389; }
+.bg2 { background-color: #e67e22; }
+.bg3 { background-color: #27ae60; }
+
+.h-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.h-txt {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.h-txt h1 {
+  font-size: 52px;
+  font-style: italic;
+  font-family: Georgia, serif;
+  margin-bottom: 10px;
+}
+
+.h-txt h2 {
+  font-size: 24px;
+  font-style: italic;
+  margin-bottom: 25px;
+  color: #e0e4e8;
+}
+
+.h-txt p {
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #d1d5d8;
+  font-size: 14px;
+}
+
+.circs {
+  display: flex;
+  gap: 20px;
+}
+
+.circ {
+  width: 60px;
+  height: 60px;
+  background-color: #a9d15e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.circ:hover {
+  transform: scale(1.1);
+}
+
+.circ.active {
+  background-color: #fff;
+  color: #a9d15e;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.h-img {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.m-img {
+  max-width: 100%;
+  max-height: 50vh; 
+  object-fit: contain; 
+  border-radius: 5px;
+  box-shadow: -10px 10px 30px rgba(0,0,0,0.4);
+  transition: opacity 0.3s ease;
+}
+
+.arr {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(228, 228, 228, 0.8);
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 5;
+}
+
+.arr:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.left { left: 5%; }
+.right { right: 5%; }
+
+.foot {
+  background-color: #3b464e;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; 
+}
+
+.f-txt {
+  color: #a0a8b0;
+  font-size: 13px;
+}
+
+.f-btn {
+  background-color: #92d050;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
