@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #33373b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    position: relative;
+    width: 320px;
+    background-color: #1e2022;
+    border-radius: 16px;
+    border: 1px solid #000;
+    padding: 10px 10px 25px 10px;
+}
+
+.header {
+    background: linear-gradient(to bottom, #2b2e33, #18191c);
+    padding: 18px 10px;
+    border-radius: 12px 12px 6px 6px;
+    border: 1px solid #111;
+    border-bottom: 2px solid #00a8ec;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    color: #00a8ec;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.header p {
+    color: #c0c8d0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    background-color: #222529;
+    text-decoration: none;
+    padding: 12px 0;
+    border-top: 1px solid #2d3136;
+    border-bottom: 1px solid #111214;
+}
+
+.menu-btn:first-child {
+    border-top: none;
+}
+
+.menu-btn .icon {
+    width: 60px;
+    text-align: center;
+    color: #00a8ec;
+    font-size: 18px;
+    border-right: 1px solid #18191b;
+}
+
+.menu-btn .text {
+    color: #e0e6ed;
+    font-size: 16px;
+    font-weight: 700;
+    padding-left: 20px;
+    letter-spacing: 1px;
+}
+
+.order-btn {
+    display: block;
+    margin-top: 15px;
+    padding: 14px 0;
+    text-align: center;
+    background: linear-gradient(to bottom, #00b4f3, #0077b5);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #005684;
+}
+
+.footer-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, #e6e6e6, #b0b0b0);
+    border: 1px solid #111;
+    border-radius: 3px;
+    padding: 4px 20px;
+    font-size: 10px;
+    color: #333;
+    clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+}
+
+.footer-badge span {
+    color: #0077b5;
+    font-weight: bold;
+}
