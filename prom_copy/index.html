@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prom.ua</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">prom.ua</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Пошук товарів і послуг">
+                <button>Знайти</button>
+            </div>
+            <div class="cart-icon">🛒 Кошик</div>
+        </div>
+    </header>
 
+    <main class="main-layout">
+        <aside class="sidebar">
+            <h3>Категорії</h3>
+            <ul class="category-list">
+                <li>Сад і город</li>
+                <li>Інструменти та обладнання</li>
+                <li>Одяг і взуття</li>
+                <li>Авто і мото</li>
+                <li>Будівництво і ремонт</li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <h2>Сад і город</h2>
+            <div id="products-grid" class="products-grid"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
