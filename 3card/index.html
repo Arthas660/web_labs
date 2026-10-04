@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xeon - Простий</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="head">
+    <div class="wrap">
+      <div class="logo">
+        <span class="l-ic">✓</span> XEON
+      </div>
+      <nav class="nav">
+        <a href="#" class="link active">Головна</a>
+        <a href="#" class="link">Послуги</a>
+        <a href="#" class="link">Портфоліо</a>
+        <a href="#" class="link">Ціни</a>
+        <a href="#" class="link">Про нас</a>
+        <a href="#" class="link">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <button class="arr left">&lt;</button>
+    
+    <div class="h-txt">
+      <h1>Безкоштовна односторінкова тема</h1>
+      <p>Xeon — це найкраща безкоштовна адаптивна односторінкова тема, доступна по всьому світу.<br>Завантажуйте її прямо зараз безкоштовно.</p>
+    </div>
+
+    <button class="arr right">&gt;</button>
+  </section>
+
+  <main class="main">
+    <section class="card">
+      <div class="grid">
+        
+        <div class="item">
+          <div class="ic red"></div>
+          <h3>Розробка під iOS</h3>
+          <p>Опис послуги або коротка інформація про розробку мобільних додатків для системи iOS.</p>
+        </div>
+
+        <div class="item">
+          <div class="ic green">🤖</div>
+          <h3>Розробка під Android</h3>
+          <p>Якісна та швидка розробка сучасних додатків для пристроїв на базі Android.</p>
+        </div>
+
+        <div class="item">
+          <div class="ic blue">❖</div>
+          <h3>Розробка Windows Phone</h3>
+          <p>Створення кросплатформених рішень та підтримка спеціалізованих систем.</p>
+        </div>
+
+        <div class="item">
+          <div class="ic purp">💎</div>
+          <h3>Розробка на Ruby on Rails</h3>
+          <p>Надійні веб-додатки та бекенд-інфраструктура будь-якої складності.</p>
+        </div>
+
+        <div class="item">
+          <div class="ic teal">JS</div>
+          <h3>Розробка на JavaScript</h3>
+          <p>Динамічні веб-сайти, інтерактивні інтерфейси та сучасні веб-додатки.</p>
+        </div>
+
+        <div class="item">
+          <div class="ic dark">👍</div>
+          <h3>Адаптивний веб-дизайн</h3>
+          <p>Створення сайтів, які ідеально відображаються на смартфонах, планшетах і ПК.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="port">
+      <h2>Портфоліо</h2>
+    </section>
+  </main>
+
+  <script>
+    const hero = document.querySelector('.hero');
+    const arrs = document.querySelectorAll('.arr');
+
+    arrs.forEach(a => {
+      a.addEventListener('click', () => hero.classList.toggle('orange-bg'));
+    });
+  </script>
+</body>
+</html>
