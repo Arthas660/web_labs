@@ -105,12 +105,9 @@ body {
   color: #fff;
   display: flex; 
   align-items: center;
-  transition: background-color 0.4s ease-in-out;
 }
 
 .bg1 { background-color: #7b8389; }
-.bg2 { background-color: #e67e22; }
-.bg3 { background-color: #27ae60; }
 
 .h-wrap {
   display: flex;
@@ -163,12 +160,6 @@ body {
   font-size: 32px;
   font-weight: bold;
   color: #fff;
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s, color 0.2s;
-}
-
-.circ:hover {
-  transform: scale(1.1);
 }
 
 .circ.active {
@@ -190,7 +181,6 @@ body {
   object-fit: contain; 
   border-radius: 5px;
   box-shadow: -10px 10px 30px rgba(0,0,0,0.4);
-  transition: opacity 0.3s ease;
 }
 
 .arr {
@@ -204,13 +194,7 @@ body {
   background-color: rgba(228, 228, 228, 0.8);
   font-size: 20px;
   color: #555;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
   z-index: 5;
-}
-
-.arr:hover {
-  background-color: rgba(255, 255, 255, 1);
 }
 
 .left { left: 5%; }
