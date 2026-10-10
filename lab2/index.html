@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню обіду</title>
+</head>
+<body>
+    <h1>Меню обіду</h1>
+
+    <h2>Напої</h2>
+    <label><input type="checkbox" class="menu-item" price="10"> Чай - 10 грн</label><br>
+    <label><input type="checkbox" class="menu-item" price="15"> Сік - 15 грн</label><br>
+    <label><input type="checkbox" class="menu-item" price="20"> Кава - 20 грн</label><br>
+
+    <h2>Перші страви</h2>
+    <label><input type="radio" name="first" class="menu-item" price="45"> Суп - 45 грн</label><br>
+    <label><input type="radio" name="first" class="menu-item" price="55"> Борщ - 55 грн</label><br>
+
+    <h2>Другі страви</h2>
+    <label><input type="radio" name="second" class="menu-item" price="60"> Паста - 60 грн</label><br>
+    <label><input type="radio" name="second" class="menu-item" price="55"> Картопля з котлетою - 55 грн</label><br>
+    <label><input type="radio" name="second" class="menu-item" price="49"> Гречка з грибами - 49 грн</label><br>
+
+
+    <br>
+    <button onclick="calculateTotal()">Загальна сума чеку</button>
+    <button onclick="clearMenu()">Clear</button>
+
+    <h3>До сплати: <span id="total-price">0</span> грн</h3>
+
+    <script src="script.js"></script>
+</body>
+</html>
