@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Менеджер товарів</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+
+<body>
+  <aside class="menu">
+    <h2>Меню</h2>
+    <button id="addButton" type="button">Додати</button>
+    <button id="editButton" type="button" disabled>Редагувати</button>
+    <button id="deleteButton" type="button" disabled>Видалити</button>
+  </aside>
+
+  <main>
+    <h1>Менеджер товарів</h1>
+    <form id="productForm" hidden>
+      <h2 id="formTitle">Новий товар</h2>
+
+      <label for="name">Назва</label>
+      <input id="name" type="text" required maxlength="100">
+
+      <label for="category">Категорія</label>
+      <input id="category" type="text" maxlength="100">
+
+
+      <label for="imageInput">Фото товару</label>
+      <input id="imageInput" type="file" accept="image/*" >
+
+      <label for="price">Ціна, грн</label>
+      <input id="price" type="number" min="0" step="1" required>
+
+      <label for="quantity">Кількість</label>
+      <input id="quantity" type="number" min="0" step="1" required>
+
+      <div class="form-buttons">
+        <button type="submit">Зберегти</button>
+        <button id="cancelButton" type="button">Скасувати</button>
+      </div>
+    </form>
+
+    <p id="message" role="status"></p>
+    <p id="emptyMessage">Товарів поки немає. Натисніть «Додати».</p>
+    <div id="cards"></div>
+  </main>
+</body>
+</html>
