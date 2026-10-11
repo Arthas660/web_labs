@@ -1,0 +1,248 @@
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  quantity: number;
+  image?: string | undefined;
+}
+
+const addButton = document.getElementById("addButton") as HTMLButtonElement;
+const editButton = document.getElementById("editButton") as HTMLButtonElement;
+const deleteButton = document.getElementById("deleteButton") as HTMLButtonElement;
+const cancelButton = document.getElementById("cancelButton") as HTMLButtonElement;
+
+const form = document.getElementById("productForm") as HTMLFormElement;
+const formTitle = document.getElementById("formTitle") as HTMLElement;
+
+const nameInput = document.getElementById("name") as HTMLInputElement;
+const categoryInput = document.getElementById("category") as HTMLInputElement;
+const priceInput = document.getElementById("price") as HTMLInputElement;
+const quantityInput = document.getElementById("quantity") as HTMLInputElement;
+const imageInput = document.getElementById("imageInput") as HTMLInputElement;
+
+const cards = document.getElementById("cards") as HTMLElement;
+const message = document.getElementById("message") as HTMLElement;
+const emptyMessage = document.getElementById("emptyMessage") as HTMLElement;
+
+let selectedId: number | null = null;
+let editingId: number | null = null;
+let nextId = 11;
+
+const DEFAULT_IMAGE = "img/default.jpg";
+let products: Product[] = [
+  { id: 1, name: "Ноутбук Lenovo", category: "Електроніка", price: 24500, quantity: 5, image: DEFAULT_IMAGE },
+  { id: 2, name: "Смартфон Samsung", category: "Електроніка", price: 12000, quantity: 8, image: DEFAULT_IMAGE },
+  { id: 3, name: "Навушники JBL", category: "Аксесуари", price: 1800, quantity: 15, image: DEFAULT_IMAGE },
+  { id: 4, name: "Мишка Logitech", category: "Аксесуари", price: 650, quantity: 20, image: DEFAULT_IMAGE },
+  { id: 5, name: "Клавіатура", category: "Аксесуари", price: 1200, quantity: 12, image: DEFAULT_IMAGE },
+  { id: 6, name: "Монітор LG", category: "Електроніка", price: 6500, quantity: 7, image: DEFAULT_IMAGE },
+  { id: 7, name: "Флешка 64 ГБ", category: "Накопичувачі", price: 350, quantity: 30, image: DEFAULT_IMAGE },
+  { id: 8, name: "Колонка Bluetooth", category: "Аудіотехніка", price: 2100, quantity: 10, image: DEFAULT_IMAGE },
+  { id: 9, name: "Вебкамера", category: "Аксесуари", price: 950, quantity: 9, image: DEFAULT_IMAGE },
+  { id: 10, name: "Зовнішній SSD 1 ТБ", category: "Накопичувачі", price: 3900, quantity: 6, image: DEFAULT_IMAGE }
+];
+
+function renderProducts(): void {
+  cards.replaceChildren();
+
+  emptyMessage.hidden = products.length > 0;
+  editButton.disabled = selectedId === null;
+  deleteButton.disabled = selectedId === null;
+
+  products.forEach((product) => {
+    const card = document.createElement("button");
+
+    card.type = "button";
+    card.className = "card";
+
+    const isSelected = product.id === selectedId;
+    card.setAttribute("aria-pressed", String(isSelected));
+
+    if (isSelected) {
+      card.classList.add("selected");
+    }
+
+    if (product.image) {
+      const image = document.createElement("img");
+
+      image.src = product.image;
+      image.alt = product.name;
+      image.className = "product-image";
+
+      card.appendChild(image);
+    }
+
+    const lines = [
+      product.name,
+      "Категорія: " + (product.category || "Без категорії"),
+      "Ціна: " + product.price.toLocaleString("uk-UA") + " грн",
+      "Кількість: " + product.quantity
+    ];
+
+    lines.forEach((text, index) => {
+      const line = document.createElement("span");
+      line.textContent = text;
+
+      if (index === 0) {
+        line.className = "product-name";
+      }
+
+      card.appendChild(line);
+    });
+
+    card.addEventListener("click", () => {
+      selectedId = selectedId === product.id ? null : product.id;
+
+      editingId = null;
+      form.hidden = true;
+      message.textContent = "";
+
+      renderProducts();
+    });
+
+    cards.appendChild(card);
+  });
+}
+
+addButton.addEventListener("click", () => {
+  editingId = null;
+
+  form.reset();
+  nameInput.setCustomValidity("");
+
+  formTitle.textContent = "Новий товар";
+  form.hidden = false;
+  message.textContent = "";
+
+  nameInput.focus();
+});
+
+cancelButton.addEventListener("click", () => {
+  form.hidden = true;
+  editingId = null;
+  imageInput.value = "";
+  nameInput.setCustomValidity("");
+});
+
+editButton.addEventListener("click", () => {
+  const product = products.find((item) => item.id === selectedId);
+
+  if (!product) return;
+
+  editingId = product.id;
+
+  nameInput.value = product.name;
+  categoryInput.value = product.category;
+  priceInput.value = String(product.price);
+  quantityInput.value = String(product.quantity);
+
+  imageInput.value = "";
+  nameInput.setCustomValidity("");
+
+  formTitle.textContent = "Редагування товару";
+  form.hidden = false;
+  message.textContent = "";
+
+  nameInput.focus();
+});
+
+deleteButton.addEventListener("click", () => {
+  const product = products.find((item) => item.id === selectedId);
+
+  if (!product) return;
+
+  if (!confirm("Видалити товар «" + product.name + "»?")) return;
+
+  if (product.image) {
+    URL.revokeObjectURL(product.image);
+  }
+
+  products = products.filter((item) => item.id !== selectedId);
+
+  selectedId = null;
+  editingId = null;
+  form.hidden = true;
+
+  message.textContent = "Товар видалено.";
+
+  renderProducts();
+});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value.trim();
+  const category = categoryInput.value.trim();
+  const price = Number(priceInput.value);
+  const quantity = Number(quantityInput.value);
+
+  if (!name) {
+    nameInput.setCustomValidity("Введіть назву товару.");
+    nameInput.reportValidity();
+    return;
+  }
+
+  if (
+    priceInput.value === "" ||
+    quantityInput.value === "" ||
+    !Number.isFinite(price) ||
+    price < 0 ||
+    !Number.isInteger(quantity) ||
+    quantity < 0
+  ) {
+    message.textContent =
+      "Введіть невід’ємну ціну та цілу невід’ємну кількість.";
+    return;
+  }
+
+  const oldProduct = products.find((item) => item.id === editingId);
+  const file = imageInput.files?.[0];
+
+  let image = oldProduct?.image;
+
+  if (file) {
+    if (!file.type.startsWith("image/")) {
+      message.textContent = "Виберіть файл зображення.";
+      return;
+    }
+
+    image = URL.createObjectURL(file);
+
+    if (oldProduct?.image) {
+      URL.revokeObjectURL(oldProduct.image);
+    }
+  }
+
+  const product: Product = {
+    id: editingId === null ? nextId++ : editingId,
+    name,
+    category,
+    price,
+    quantity,
+    image
+  };
+
+  if (editingId === null) {
+    products.push(product);
+  } else {
+    products = products.map((item) =>
+      item.id === editingId ? product : item
+    );
+  }
+
+  selectedId = product.id;
+  editingId = null;
+  form.hidden = true;
+  imageInput.value = "";
+
+  message.textContent = "Товар збережено.";
+
+  renderProducts();
+});
+
+nameInput.addEventListener("input", () => {
+  nameInput.setCustomValidity("");
+});
+
+renderProducts();
