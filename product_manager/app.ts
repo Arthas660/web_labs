@@ -1,4 +1,3 @@
-// Опис товару
 interface Product {
   id: number;
   name: string;
@@ -26,7 +25,6 @@ const cards = document.getElementById("cards") as HTMLElement;
 const message = document.getElementById("message") as HTMLElement;
 const emptyMessage = document.getElementById("emptyMessage") as HTMLElement;
 
-// 0 означає, що товар не вибраний або не редагується
 let selectedId = 0;
 let editingId = 0;
 let nextId = 11;
